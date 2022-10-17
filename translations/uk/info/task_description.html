@@ -1,16 +1,16 @@
 <!-- Describe task in general -->
 
 <p>
-    Відсортуй числа в списку. Але положення нулів змінювати не варто.
+    Відсортуй числа в {% if is_js %}масиві{% else %}списку{% endif %}. Але положення нулів змінювати не варто.
 </p>
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Вхідні дані: </strong> {% if interpreter.slug == "js-node" %}Масив{% else %}Список{% endif %}.
+    <strong>Вхідні дані: </strong> {% if is_js %}Масив{% else %}Список{% endif %}.
 </p>
 
 <p>
-    <strong>Вихідні дані: </strong> {% if interpreter.slug == "js-node" %}Масив{% else %}Ітераційний об'єкт (tuple, list, iterator ...){% endif %}.
+    <strong>Вихідні дані: </strong> {% if is_js %}Масив{% else %}Ітераційний об'єкт (tuple, list, iterator ...){% endif %}.
 </p>
 
 
@@ -22,3 +22,10 @@
 
 <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
+
+<p>
+    <strong>Передумова: </strong>
+</p>
+<p>
+    Всі числа позитивні.
+</p>

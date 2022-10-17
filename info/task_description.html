@@ -1,16 +1,16 @@
 <!-- Describe task in general -->
 
 <p>
-    Sort the numbers in {% if interpreter.slug == "js-node" %}an array{% else %}a list{% endif %}. But the position of zeros should not be changed.
+    Sort the numbers in {% if is_js %}an array{% else %}a list{% endif %}. But the position of zeros should not be changed.
 </p>
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input: </strong> {% if interpreter.slug == "js-node" %}An Array{% else %}A List{% endif %}.
+    <strong>Input: </strong> {% if is_js %}An Array{% else %}A List{% endif %}.
 </p>
 
 <p>
-    <strong>Output: </strong> An {% if interpreter.slug == "js-node" %}Array{% else %}Iterable (tuple, list, iterator ...){% endif %}.
+    <strong>Output: </strong> An {% if is_js %}Array{% else %}Iterable (tuple, list, iterator ...){% endif %}.
 </p>
 
 
@@ -22,3 +22,10 @@
 
 <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
+
+<p>
+    <strong>Precondition: </strong>
+</p>
+<p>
+    All numbers are positive.
+</p>
