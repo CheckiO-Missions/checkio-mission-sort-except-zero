@@ -2,7 +2,7 @@
 {% block env %}import assert from "assert";{% endblock env %}
 
 {% block start %}
-function exceptZero(items: array) array{
+function exceptZero(items: number[]): number[] {
     // your code here
     return items;
 }
@@ -10,7 +10,7 @@ function exceptZero(items: array) array{
 
 {% block example %}
 console.log('Example:');
-console.log(JSON.stringify(exceptZero([5, 3, 0, 0, 4, 1, 4, 0, 7])))
+console.log(JSON.stringify(exceptZero([5, 3, 0, 0, 4, 1, 4, 0, 7])));
 {% endblock %}
 
 // These "asserts" are used for self-checking
