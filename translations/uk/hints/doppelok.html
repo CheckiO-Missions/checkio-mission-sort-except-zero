@@ -1,120 +1,142 @@
 <body data-author="Doppelok">
 <div class="question-answer">
     <div class="question">
-        Я не знаю, як розпочати вирішення цієї місії
+        <p>
+            Я не знаю, як розпочати вирішення цієї місії.
+        </p>
     </div>
     <div class="answer">
-        Пропоную тобі наступну ідею: тобі потрібно запам'ятати на яких позиціях знаходяться нулі; відсортувати список
-        по зростанню, без нулів; повернути нулі на свої позиції.
+        <p>
+            Пропоную тобі наступну ідею: тобі потрібно запам'ятати на яких позиціях знаходяться нулі; відсортувати список по зростанню, без нулів; повернути нулі на свої позиції.
+        </p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Мені потрібна допомога, щоб продовжити місію
+        <p>
+            Мені потрібна допомога, щоб продовжити місію.
+        </p>
     </div>
     <div class="answer">
-        Тобі буде корисно прочитати трохи інформації про:
-        <a href='https://docs.python.org/3.10/tutorial/datastructures.html'>list.insert()</a>
-        (<a href='https://www.w3schools.com/python/ref_list_insert.asp'>приклад</a> ),
-        <a href='https://docs.python.org/3.10/library/functions.html#sorted'>sorted()</a>
-        (<a href='https://www.w3schools.com/python/ref_func_sorted.asp'>приклад</a> ),
-        <a href='https://docs.python.org/3.10/library/functions.html#filter'>filter()</a>
-        (<a href='https://www.w3schools.com/python/ref_func_filter.asp'>приклад</a> ),
-        <a href='https://docs.python.org/3.10/library/functions.html#enumerate'>enumerate()</a>
-        (<a href='https://www.w3schools.com/python/ref_func_enumerate.asp'>приклад</a> ).
+        <p>
+            Тобі буде корисно прочитати трохи інформації про: <a target="_blank" href='https://docs.python.org/3.10/tutorial/datastructures.html'>list.insert()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_list_insert.asp'>приклад</a>), <a target="_blank" href='https://docs.python.org/3.10/library/functions.html#sorted'>sorted()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_func_sorted.asp'>приклад</a>), <a target="_blank" href='https://docs.python.org/3.10/library/functions.html#filter'>filter()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_func_filter.asp'>приклад</a>), <a target="_blank" href='https://docs.python.org/3.10/library/functions.html#enumerate'>enumerate()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_func_enumerate.asp'>приклад</a>).
+        </p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Потрібна допомога!
+        <p>
+            Потрібна допомога!
+        </p>
     </div>
     <div class="answer">
-        Почнемо з того, що створимо список, в якому будемо тримати позиції нулів. Використаємо для цього функцію enumerate()
-        та генератор списків.
+        <p>
+            Почнемо з того, що створимо список, в якому будемо тримати позиції нулів. Використаємо для цього функцію <b class="code">enumerate()</b> та генератор списків.
+        </p>
         <pre class="brush: python">
 items = [5, 3, 0, 0, 4, 1, 4, 0, 7]
-res = [i for i in enumerate(items) if i[1] == 0]
+res = [i for i, v in enumerate(items) if v == 0]
 print(res)
         </pre>
         <div class="output">
-                <p>Output</p>
-                <pre>[(2, 0), (3, 0), (7, 0)]</pre>
+                <p>Вивід:</p>
+                <pre>[2, 3, 7]</pre>
         </div>
-        В список попадають пари (індекс, значення). Тому ми точно фіксуємо для себе де саме знаходились нулі.
+        <p>
+            В список попадають індекси елементів з нульовим значенням. Тому ми точно фіксуємо для себе де саме знаходяться нулі.
+        </p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Я вже не знаю що робити. Мені потрібна маленька підказка.
+        <p>
+            Я вже не знаю що робити. Мені потрібна маленька підказка.
+        </p>
     </div>
     <div class="answer">
-        Наступним кроком створимо список, в який помістимо відсортований вхідний список без нулів. Для цього використаємо
-        функції filter() та sorted().
+        <p>
+            Наступним кроком створимо список, в який помістимо відсортований вхідний список без нулів. Для цього використаємо функції <b class="code">filter()</b> та <b class="code">sorted()</b>.
+        </p>
         <pre class="brush: python">
 items = [5, 3, 0, 0, 4, 1, 4, 0, 7]
-res = [i for i in enumerate(items) if i[1] == 0]
+res = [i for i, v in enumerate(items) if v == 0]
 res_2 = sorted(filter(lambda x: x > 0, items))
 print(res_2)
         </pre>
         <div class="output">
-                <p>Output</p>
+                <p>Вивід:</p>
                 <pre>[1, 3, 4, 4, 5, 7]</pre>
         </div>
-        Функція filter() використовує анонімну функцію lambda, в якій ми простим виразом перевіряємо кожен елемент заданого
-        списку на те, чи він більше ніж 0. Якщо так - залишаємо, якщо ні - пропускаємо його. І відразу поміщаємо результат
-        дії функції filter() до функції sorted(), яка сортує новостворений список за зростанням значення елементів.
+        <p>
+            Функція <b class="code">filter()</b> використовує анонімну функцію (<b class="code">lambda</b> вираз), в якій ми простим виразом перевіряємо кожен елемент заданого списку на те, чи він більше ніж 0. Якщо так - залишаємо, якщо ні - пропускаємо його. І відразу поміщаємо результат дії функції <b class="code">filter()</b> до функції <b class="code">sorted()</b>, яка сортує новостворений список за зростанням значення елементів.
+        </p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Нічого не працює. SOS
+        <p>
+            Нічого не працює. SOS
+        </p>
     </div>
     <div class="answer">
-        Нам залишилось помістити наші нулі назад на свої позиції до списку <b class="code">res_2.</b> Використаємо для цього
-        цикл for та метод списків list.insert(). Він приймає позицію елементу як перший аргумент, та значення елементу як
-        другий елемент. Тобто наші збережені пари в <b class="code">res</b> нам стануть в пригоді.
+        <p>
+            Нам залишилось помістити наші нулі назад на свої позиції до списку <b class="code">res_2</b>. Використаємо для цього цикл <b class="code">for</b> та метод списків <b class="code">list.insert()</b>. Він приймає позицію елементу як перший аргумент, та значення елементу як другий елемент. Тобто наші збережені індекси в <b class="code">res</b> нам стануть в пригоді.
+        </p>
         <pre class="brush: python">
 items = [5, 3, 0, 0, 4, 1, 4, 0, 7]
-res = [i for i in enumerate(items) if i[1] == 0]
+res = [i for i, v in enumerate(items) if v == 0]
 res_2 = sorted(filter(lambda x: x > 0, items))
 for i in res:
-    res_2.insert(i[0], i[1])
+    res_2.insert(i, 0)
         </pre>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Не хочу здаватись, допоможи!
+        <p>
+            Не хочу здаватись, допоможи!
+        </p>
     </div>
     <div class="answer">
-        Тобі залишилось обгорнути код у вираз функції та повернути значення змінної <b class="code">res_2.</b>
+        <p>
+            Тобі залишилось обгорнути код у вираз функції та повернути значення змінної <b class="code">res_2</b>.
+        </p>
+        
         <pre class="brush: python">
-from typing import Iterable
+from collections.abc import Iterable
 
 
-def except_zero(items: list) -> Iterable:
-    res = [i for i in enumerate(items) if i[1] == 0]
+def except_zero(items: list[int]) -> Iterable[int]:
+
+    res = [i for i, v in enumerate(items) if v == 0]
     res_2 = sorted(filter(lambda x: x > 0, items))
     for i in res:
-        res_2.insert(i[0], i[1])
+        res_2.insert(i, 0)
     return res_2
         </pre>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Я хочу бути кращим з кращих ПРОГРАМІСТІВ!!! ПОКАЖИ МЕНІ БІЛЬШЕ РІШЕНЬ!!1!!!11!
+        <p>
+            Я хочу бути кращим з кращих ПРОГРАМІСТІВ!!! ПОКАЖИ МЕНІ БІЛЬШЕ РІШЕНЬ!!1!!!11!
+        </p>
     </div>
     <div class="answer">
-        Добре, добре! Оце настрій!=)
-        Це рішення буде важкувато зрозуміти. Ми можемо вирішити цю місію за допомогою модулю <b class="code">numpy.</b>
-        Тут ти можеш почитати про цей <a href='https://numpy.org/doc/'>модуль</a>.
+        <p>
+            Добре, добре! Оце настрій!=) Це рішення буде важкувато зрозуміти. Ми можемо вирішити цю місію за допомогою модулю <b class="code">numpy</b>. Тут ти можеш почитати про цей <a target="_blank" href='https://numpy.org/doc/'>модуль</a>.
+        </p>
+        
         <pre class="brush: python">
+from collections.abc import Iterable
 import numpy
 
-def except_zero(items):
+
+def except_zero(items: list[int]) -> Iterable[int]:
+
     items = numpy.r_[items]
     items[items != 0] = sorted(items[items != 0])
+    
     return items
         </pre>
     </div>
