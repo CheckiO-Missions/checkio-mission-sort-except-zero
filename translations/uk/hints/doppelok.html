@@ -112,6 +112,7 @@ def except_zero(items: list[int]) -> Iterable[int]:
     res_2 = sorted(filter(lambda x: x > 0, items))
     for i in res:
         res_2.insert(i, 0)
+        
     return res_2
         </pre>
     </div>
@@ -136,7 +137,7 @@ def except_zero(items: list[int]) -> Iterable[int]:
 
     items = numpy.r_[items]
     items[items != 0] = sorted(items[items != 0])
-    
+
     return items
         </pre>
     </div>
