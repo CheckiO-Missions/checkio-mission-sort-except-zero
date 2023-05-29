@@ -1,0 +1,31 @@
+<!-- Describe task in general -->
+
+<p>
+    Triez les {% if is_js %}nombres <span>(numbers)</span>{% else %} entiers <span>(integers)</span>{% endif %} dans {% if is_js %}un tableau <span>(array)</span>{% else %} une liste <span>(list)</span>{% endif %}. Mais la position des zéros ne doit pas être modifiée.
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Entrée:</strong> {% if is_js %}Un tableau <span>(array)</span> de nombres <span>(numbers)</span>{% else %} Une liste <span>(list)</span> d'entiers <span>(integers)</span>{% endif %}.
+</p>
+
+<p>
+   <strong>Sortie:</strong> {% if is_js %}Tableau <span>(Array)</span> de nombres <span>(numbers)</span>{% else %} Liste <span>(List)</span> ou autre Iterable (tuple, generator, iterator) d'entiers <span>(integers)</span>{% endif %}.
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Exemples:</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<p>
+    <strong>Condition préalable:</strong>
+</p>
+<p>
+    Tous les nombres sont non négatifs.
+</p>

@@ -1,0 +1,158 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Je n'ai aucune idée de la manière de commencer à résoudre cette mission.
+    </div>
+    <div class="answer">
+        <p>
+            💡 L'idée est la suivante: créez d'abord un tableau trié des éléments non nuls de <b class="code">items</b>, puis créez un nouveau tableau et, tout en itérant sur <b class="code">items</b>, remplissez-le avec des valeurs du tableau précédemment créé ou avec <b class="code">0</b>, en fonction de la valeur respective de <b class="code">items</b>. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, par quoi dois-je commencer?
+    </div>
+    <div class="answer">
+        <p>
+            Créons <b class="code">const cleaned</b> (vous n'allez pas le modifier après sa création) avec des éléments non nuls de <b class="code">items</b>. Utilisez la méthode <a target="_blank" href="https://www.w3schools.com/JSREF/jsref_filter.asp">filter()</a> pour ce faire. 
+        </p>
+        <pre class="brush: javascript">
+const cleaned = items.filter(...);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Comment filtrer les éléments non nuls?
+    </div>
+    <div class="answer">
+        <p>
+            Puisque <b class="code">0</b> a la valeur logique <b class="code">false</b> et que tous les autres nombres ont la valeur <b class="code">true</b>, vous pouvez filtrer les éléments non nuls en fonction de leur valeur logique. Pour obtenir la valeur booléenne d'un élément, utilisez la fonction <a target="_blank" href="https://www.w3schools.com/js/js_booleans.asp">Boolean()</a>. Si vous utilisez cette fonction comme règle de filtrage, elle ne conserve que les éléments <b class="code">true</b>.
+        </p>
+        <pre class="brush: javascript">
+const cleaned = items.filter(Boolean);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Que faire ensuite?
+    </div>
+    <div class="answer">
+        <p>
+            Vous devez maintenant trier <b class="code">cleaned</b> par ordre décroissant, afin d'en extraire les éléments dans le bon ordre - du plus petit au plus grand. Utilisez pour cela la méthode <a target="_blank" href="https://www.w3schools.com/jsref/jsref_sort.asp">sort()</a> avec une fonction anonyme pour le tri décroissant. 
+        </p>
+        <pre class="brush: javascript">
+const cleaned = items.filter(Boolean).sort((a, b)=> b-a);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Quelle est l'étape suivante?
+    </div>
+    <div class="answer">
+        <p>
+            Créez un nouveau tableau, que vous allez remplir avec des valeurs correctes et renvoyer à la fin.
+        </p>
+        <pre class="brush: javascript">
+let res = [];
+...
+return res;
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Comment remplir le nouveau tableau?
+    </div>
+    <div class="answer">
+        <p>
+            Itérer sur le site <b class="code">items</b> avec <a target="_blank" href="https://www.w3schools.com/js/js_loop_forof.asp">for/of loop</a> et pousser le résultat d'une expression dans le nouveau tableau.    
+        </p>
+        <pre class="brush: javascript">
+for (let i of items)
+    res.push(...);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Aidez-moi à écrire l'expression.
+    </div>
+    <div class="answer">
+        <p>
+            Réfléchissons ensemble à ce qu'il devrait y avoir. Si la valeur de l'élément actuel de <b class="code">items</b> est <b class="code">0</b> - elle doit rester à sa place dans le tableau final, sinon - la valeur suivante du tableau trié doit être collée dans le tableau final. De cette façon, vous remplissez le tableau final avec <b class="code">0</b> ou des valeurs dans l'ordre croissant. Il semble que vous ayez besoin de <a target="_blank" href="https://www.w3schools.com/react/react_es6_ternary.asp">ternary operator</a> ici pour vérifier la valeur logique de l'élément, comme nous l'avons fait précédemment.
+        </p>
+        <pre class="brush: javascript">
+Boolean(i)? ...: ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Comment terminer l'expression?
+    </div>
+    <div class="answer">
+        <p>
+            Lorsque l'élément courant est non nul (valeur booléenne == true), vous devez placer la valeur suivante de votre tableau trié <b class="code">cleaned</b>. Dans ce cas, un moyen simple et rapide de le faire est d'utiliser la méthode <a target="_blank" href="https://www.w3schools.com/jsref/jsref_pop.asp">pop()</a> - elle supprime le dernier élément et le renvoie. Comme <b class="code">cleaned</b> est trié par ordre décroissant, vous avez toujours besoin du dernier élément (le plus petit). <b class="code">0</b> reste <b class="code">0</b>.
+        </p>
+        <pre class="brush: python">
+Boolean(i)? cleaned.pop(): 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Alors, à quoi devrait ressembler ma solution finale?
+    </div>
+    <div class="answer">
+        <p>
+            Il vous suffit de tout regrouper et d'envelopper votre code dans une expression de fonction. 
+        </p>
+        <p>Voici la solution complète:</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function exceptZero(items: number[]): number[] {
+
+    const cleaned = items.filter(Boolean).sort((a, b)=> b-a);
+    let res = [];
+    for (let i of items)
+        res.push(Boolean(i)? cleaned.pop(): 0);
+    return res;
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Montrez-moi d'autres solutions!<br />
+        parce que je veux être un vrai 🥇 Javascript Hero!
+    </div>
+    <div class="answer">
+        <p>Bien sûr, prenez-le!</p>
+        <p>
+            Ici, le filtrage et le tri croissant sont utilisés, ce que vous savez déjà. Ensuite, le nouveau tableau a été créé en utilisant l'original avec l'expression logique de la valeur originale et celle du tableau trié. Si l'original est <b class="code">0</b> - l'expression logique renvoie <b class="code">0</b> sinon - la deuxième valeur (du tableau trié).
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+var exceptZero = (
+    ns, c=0,
+    ns2 = ns.filter(v => v).sort((a,b) => a-b)
+) => ns.map((v,i) => v && ns2[c++])
+        </pre>
+        </div>
+        <p><b>Click "Best solutions" at mission menu and see a lot of other interesting solutions!</b></p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Merci! Je comprends mieux maintenant! Tout fonctionne bien!
+    </div>
+    <div class="answer">
+        👍 Heureux de l'apprendre!
+    </div>
+</div>
+</body>
