@@ -1,16 +1,16 @@
 <!-- Describe task in general -->
 
 <p>
-    Sort the {% if is_js %}<span translate="repeat">numbers</span>{% else %}<span translate="repeat">integers</span>{% endif %} in {% if is_js %}an <span translate="repeat">array</span>{% else %}a <span translate="repeat">list</span>{% endif %}. But the position of zeros should not be changed.
+    Sort the integers in sequence in sequence. But the position of zeros should not be changed.
 </p>
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input:</strong> {% if is_js %}An <span translate="repeat">array</span> of <span translate="repeat">numbers</span>{% else %}A <span translate="repeat">list</span> of <span translate="repeat">integers</span>{% endif %}.
+    <strong>Input:</strong> <span translate="repeat">{% if is_js %}Array{% else %}List{% endif %}</span> of integers <span translate="no">{% if is_js %}(number){% else %}(int){% endif %}</span>.
 </p>
 
 <p>
-    <strong>Output:</strong> {% if is_js %}<span translate="repeat">Array</span> of <span translate="repeat">numbers</span>{% else %}<span translate="repeat">List</span> or another <span translate="repeat">Iterable</span> (<span translate="repeat">tuple</span>, <span translate="repeat">generator</span>, <span translate="repeat">iterator</span>) of <span translate="repeat">integers</span>{% endif %}.
+    <strong>Output:</strong> {% if is_js %}<span translate="repeat">Array</span>{% else %}<span translate="repeat">List</span> or another <span translate="repeat">Iterable</span> (<span translate="repeat">tuple</span>, <span translate="repeat">generator</span>, <span translate="repeat">iterator</span>){% endif %} of integers <span translate="no">{% if is_js %}(number){% else %}(int){% endif %}</span>.
 </p>
 
 
