@@ -1,0 +1,158 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Nie mam pojęcia, jak zacząć rozwiązywać tę misję.
+    </div>
+    <div class="answer">
+        <p>
+            pomysł jest następujący: najpierw proszę utworzyć posortowaną tablicę niezerowych elementów <b class="code">items</b>, następnie utworzyć nową tablicę i podczas iteracji po <b class="code">items</b>, wypełnić ją wartościami z wcześniej utworzonej tablicy lub z <b class="code">0</b>, w zależności od odpowiedniej wartości <b class="code">items</b>. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, od czego powinienem zacząć?
+    </div>
+    <div class="answer">
+        <p>
+            Proszę utworzyć <b class="code">const cleaned</b> (nie będzie on zmieniany po utworzeniu) z niezerowymi elementami <b class="code">items</b>. Proszę użyć do tego metody <a target="_blank" href="https://www.w3schools.com/JSREF/jsref_filter.asp">filter()</a>. 
+        </p>
+        <pre class="brush: javascript">
+const cleaned = items.filter(...);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak filtrować niezerowe elementy?
+    </div>
+    <div class="answer">
+        <p>
+            Ponieważ <b class="code">0</b> ma wartość logiczną <b class="code">false</b>, a wszystkie inne liczby mają wartość <b class="code">true</b>, można filtrować elementy niezerowe według ich wartości logicznej. Aby uzyskać wartość logiczną czegoś, proszę użyć funkcji <a target="_blank" href="https://www.w3schools.com/js/js_booleans.asp">Boolean()</a>. Jeśli użyją Państwo tej funkcji jako reguły filtrowania, zatrzyma ona tylko elementy <b class="code">true</b>.
+        </p>
+        <pre class="brush: javascript">
+const cleaned = items.filter(Boolean);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Co robić dalej?
+    </div>
+    <div class="answer">
+        <p>
+            Teraz trzeba posortować <b class="code">cleaned</b> malejąco, aby później pobrać z niego elementy w odpowiedniej kolejności - od końca od najmniejszego. W tym celu proszę użyć metody <a target="_blank" href="https://www.w3schools.com/jsref/jsref_sort.asp">sort()</a> z anonimową funkcją sortowania malejącego. 
+        </p>
+        <pre class="brush: javascript">
+const cleaned = items.filter(Boolean).sort((a, b)=> b-a);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jaki jest następny krok?
+    </div>
+    <div class="answer">
+        <p>
+            Proszę utworzyć nową tablicę, którą należy wypełnić odpowiednimi wartościami i zwrócić na końcu.
+        </p>
+        <pre class="brush: javascript">
+let res = [];
+...
+return res;
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak wypełnić nową tablicę?
+    </div>
+    <div class="answer">
+        <p>
+            Proszę wykonać iterację po <b class="code">items</b> z <a target="_blank" href="https://www.w3schools.com/js/js_loop_forof.asp">for/of loop</a> i przesunąć wynik wyrażenia do nowej tablicy.    
+        </p>
+        <pre class="brush: javascript">
+for (let i of items)
+    res.push(...);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Proszę mi pomóc napisać wyrażenie.
+    </div>
+    <div class="answer">
+        <p>
+            Zastanówmy się wspólnie, co powinno się tam znaleźć. Jeśli wartość bieżącego elementu <b class="code">items</b> to <b class="code">0</b> - powinien on pozostać na swoim miejscu w tablicy końcowej, w przeciwnym razie - następna wartość z posortowanej tablicy powinna zostać wklejona do tablicy końcowej. W ten sposób wypełni Pan końcową tablicę <b class="code">0</b> lub wartościami w porządku rosnącym. Wygląda na to, że potrzebuje Pan <a target="_blank" href="https://www.w3schools.com/react/react_es6_ternary.asp">ternary operator</a> tutaj ze sprawdzaniem wartości logicznej elementu, tak jak zrobiliśmy to wcześniej.
+        </p>
+        <pre class="brush: javascript">
+Boolean(i)? ...: ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak zakończyć wyrażenie?
+    </div>
+    <div class="answer">
+        <p>
+            Gdy bieżący element jest niezerowy (wartość logiczna == true), należy umieścić następną wartość z posortowanej tablicy <b class="code">cleaned</b>. W tym przypadku krótkim i łatwym sposobem jest użycie metody <a target="_blank" href="https://www.w3schools.com/jsref/jsref_pop.asp">pop()</a> - usuwa ona ostatni element i zwraca go. Ponieważ <b class="code">cleaned</b> jest posortowana malejąco, zawsze potrzebują Państwo ostatniego (najmniejszego) elementu. <b class="code">0</b> pozostaje <b class="code">0</b>.
+        </p>
+        <pre class="brush: python">
+Boolean(i)? cleaned.pop(): 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak więc powinno wyglądać moje ostateczne rozwiązanie?
+    </div>
+    <div class="answer">
+        <p>
+            Wystarczy połączyć wszystko i zawinąć kod w wyrażenie funkcyjne. 
+        </p>
+        <p>Oto całe rozwiązanie:</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function exceptZero(items: number[]): number[] {
+
+    const cleaned = items.filter(Boolean).sort((a, b)=> b-a);
+    let res = [];
+    for (let i of items)
+        res.push(Boolean(i)? cleaned.pop(): 0);
+    return res;
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Proszę pokazać mi więcej rozwiązań!<br />
+        bo chcę być prawdziwym 🥇 bohaterem Javascript!
+    </div>
+    <div class="answer">
+        <p>Jasne, proszę pobrać!</p>
+        <p>
+            Tutaj zastosowano filtrowanie i sortowanie rosnące, które już Państwo znają. Następnie nowa tablica została utworzona przy użyciu oryginalnej z wyrażeniem logicznym z oryginalnej wartości i jednej z posortowanej tablicy. Jeśli oryginał to <b class="code">0</b> - wyrażenie logiczne zwraca <b class="code">0</b> w przeciwnym razie - drugą wartość (z posortowanej tablicy).
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+var exceptZero = (
+    ns, c=0,
+    ns2 = ns.filter(v => v).sort((a,b) => a-b)
+) => ns.map((v,i) => v && ns2[c++])
+        </pre>
+        </div>
+        <p>Proszę kliknąć <b>Best Solutions</b> w menu misji i zobaczyć wiele innych ciekawych rozwiązań!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa jak należy!
+    </div>
+    <div class="answer">
+        miło mi to słyszeć!
+    </div>
+</div>
+</body>

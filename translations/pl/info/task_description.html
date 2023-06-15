@@ -1,0 +1,31 @@
+<!-- Describe task in general -->
+
+<p>
+    Proszę posortować liczby całkowite po kolei. Ale pozycja zer nie powinna zostać zmieniona.
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Dane wejściowe:</strong> {% if is_js %}Tablica{% else %}Lista{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span> liczb całkowitych <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
+</p>
+
+<p>
+   <strong>Dane wyjściowe:</strong> {% if is_js %}Tablica <span>(Array)</span>{% else %} Lista <span>(List)</span> lub inna Iterowalna <span>(Iterable)</span> (krotka <span>(tuple)</span>, generator, iterator){% endif %} liczb całkowitych <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Przykłady:</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<p>
+    <strong>Warunek wstępny:</strong>
+</p>
+<p>
+    Wszystkie liczby są nieujemne.
+</p>
