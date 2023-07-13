@@ -1,0 +1,158 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        我不知道如何开始解决这项任务。
+    </div>
+    <div class="answer">
+        <p>
+            💡我们的想法如下：首先创建一个由<b class="code">items</b> 的非零项排序的数组，然后创建一个新的数组，在遍历<b class="code">items</b> 的同时，根据<b class="code">items</b> 的相应值，用之前创建的数组中的值或<b class="code">0</b> 的值填充它。  
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        好的，我应该从哪里开始呢？
+    </div>
+    <div class="answer">
+        <p>
+            让我们用<b class="code">items</b> 的非零元素创建<b class="code">const cleaned</b> （创建后不会更改）。使用<a target="_blank" href="https://www.w3schools.com/JSREF/jsref_filter.asp">filter()</a> 方法。 
+        </p>
+        <pre class="brush: javascript">
+const cleaned = items.filter(...);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        如何过滤非零元素？
+    </div>
+    <div class="answer">
+        <p>
+            由于<b class="code">0</b> 的逻辑值为<b class="code">false</b> ，所有其他数字的逻辑值为<b class="code">true</b> ，因此可以通过逻辑值过滤非零项。使用<a target="_blank" href="https://www.w3schools.com/js/js_booleans.asp">Boolean()</a> 函数获取某项的布尔值。如果使用该函数作为过滤规则，则只保留<b class="code">true</b> 元素。
+        </p>
+        <pre class="brush: javascript">
+const cleaned = items.filter(Boolean);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        下一步做什么？
+    </div>
+    <div class="answer">
+        <p>
+            现在你需要对<b class="code">cleaned</b> 进行降序排序，以便以后按正确的顺序获取元素--从小到大。使用<a target="_blank" href="https://www.w3schools.com/jsref/jsref_sort.asp">sort()</a> 方法和匿名函数进行降序排序。 
+        </p>
+        <pre class="brush: javascript">
+const cleaned = items.filter(Boolean).sort((a, b)=> b-a);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        下一步是什么？
+    </div>
+    <div class="answer">
+        <p>
+            创建一个新的数组，在数组中填入正确的值并在最后返回。
+        </p>
+        <pre class="brush: javascript">
+let res = [];
+...
+return res;
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        如何填充新数组？
+    </div>
+    <div class="answer">
+        <p>
+            使用<a target="_blank" href="https://www.w3schools.com/js/js_loop_forof.asp">for/of loop</a> 遍历<b class="code">items</b> 并将表达式的结果推送到新数组中。    
+        </p>
+        <pre class="brush: javascript">
+for (let i of items)
+    res.push(...);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        帮助我编写表达式。
+    </div>
+    <div class="answer">
+        <p>
+            让我们一起想一想，应该有什么。如果<b class="code">items</b> 的当前值是<b class="code">0</b> - 它应该保留在最终数组中，否则 - 从排序数组中的下一个值应该粘贴到最终数组中。这样，你就可以用<b class="code">0</b> 或者按升序排列的值来填充最终数组。看起来你需要<a target="_blank" href="https://www.w3schools.com/react/react_es6_ternary.asp">ternary operator</a> ，就像我们之前做的那样，检查item的逻辑值。
+        </p>
+        <pre class="brush: javascript">
+Boolean(i)? ...: ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        如何完成表达式？
+    </div>
+    <div class="answer">
+        <p>
+            当当前元素为非零（布尔值==true）时，你必须将下一个值从排序数组<b class="code">cleaned</b> 。在这种情况下，一个简捷的方法是使用<a target="_blank" href="https://www.w3schools.com/jsref/jsref_pop.asp">pop()</a> 方法--它删除最后一个元素并返回。由于<b class="code">cleaned</b> 是降序排序的，所以你总是需要最后一个（最小的）元素。<b class="code">0</b> 仍然是<b class="code">0</b>.
+        </p>
+        <pre class="brush: python">
+Boolean(i)? cleaned.pop(): 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        那么，我的最终解决方案应该是怎样的呢？
+    </div>
+    <div class="answer">
+        <p>
+            您只需将所有内容连接起来，并将代码封装为函数表达式。 
+        </p>
+        <p>下面是整个解决方案：</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function exceptZero(items: number[]): number[] {
+
+    const cleaned = items.filter(Boolean).sort((a, b)=> b-a);
+    let res = [];
+    for (let i of items)
+        res.push(Boolean(i)? cleaned.pop(): 0);
+    return res;
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        向我展示更多解决方案！<br />
+        因为我想成为一个真正的 🥇 Javascript 英雄！
+    </div>
+    <div class="answer">
+        <p>当然，抓住它！</p>
+        <p>
+            这里使用了升序过滤和排序，你已经知道了。然后，使用原始数组的逻辑表达式和排序数组的逻辑表达式创建新数组。如果原始值为<b class="code">0</b> ，逻辑表达式返回<b class="code">0</b> ，否则返回第二个值（排序数组中的值）。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+var exceptZero = (
+    ns, c=0,
+    ns2 = ns.filter(v => v).sort((a,b) => a-b)
+) => ns.map((v,i) => v && ns2[c++])
+        </pre>
+        </div>
+        <p>在任务菜单中点击<b>Best Solutions</b> ，可以看到很多其他有趣的解决方案！</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        谢谢！我现在知道并理解得更多了！一切正常！
+    </div>
+    <div class="answer">
+        很高兴听到这个消息！
+    </div>
+</div>
+</body>
