@@ -1,0 +1,31 @@
+<!-- Describe task in general -->
+
+<p>
+    将整数依次排序。但是0的位置不能改变。
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>输入</strong> {% if is_js %}数组{% else %}列表{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span>的整数 <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
+</p>
+
+<p>
+   <strong>输出：</strong> {% if is_js %}数组<span>(Array)</span>{% else %} 列表<span>(List)</span> 或其他可迭代<span>(Iterable)</span> (tuple<span>(tuple)</span>, generator<span>(generator)</span>, iterator<span>(iterator)</span>){% endif %} of integers <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>例子：</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<p>
+    <strong>前提条件：</strong>
+</p>
+<p>
+    所有数都是非负数。
+</p>
