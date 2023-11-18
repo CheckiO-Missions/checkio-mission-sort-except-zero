@@ -1,0 +1,147 @@
+<body data-author="Doppelok">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich weiß nicht, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Ich biete Ihnen folgende Idee an: Sie müssen sich merken, an welchen Positionen die Nullen stehen; sortieren Sie die Liste in aufsteigender Reihenfolge, ohne Nullen; bringen Sie die Nullen an ihre Positionen zurück.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich brauche Hilfe, um die Mission fortzusetzen.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Es wird nützlich für Sie sein, einige Informationen zu lesen: <a target="_blank" href='https://docs.python.org/3.10/tutorial/datastructures.html'>list.insert()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_list_insert.asp'>example</a>), <a target="_blank" href='https://docs.python.org/3.10/library/functions.html#sorted'>sorted()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_func_sorted.asp'>example</a>), <a target="_blank" href='https://docs.python.org/3.10/library/functions.html#filter'>filter()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_func_filter.asp'>example</a>), <a target="_blank" href='https://docs.python.org/3.10/library/functions.html#enumerate'>enumerate()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_func_enumerate.asp'>example</a>).
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Sie brauchen Hilfe!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Beginnen wir damit, eine Liste zu erstellen, in der wir die Positionen der Nullen festhalten wollen. Dazu verwenden wir die Funktion <b class="code">enumerate()</b> und das Listenverständnis.
+        </p>
+        <pre class="brush: python">
+items = [5, 3, 0, 0, 4, 1, 4, 0, 7]
+res = [i for i, v in enumerate(items) if v == 0]
+print(res)
+        </pre>
+        <div class="output">
+                <p>Ausgabe:</p>
+                <pre>[2, 3, 7]</pre>
+        </div>
+        <p>
+            Indizes mit dem Wert Null fallen in die Liste. Daher halten wir für uns selbst fest, wo genau sich die Nullen befinden.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich weiß nicht mehr, was ich tun soll. Ich brauche einen kleinen Tipp.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Der nächste Schritt besteht darin, eine Liste zu erstellen, in der wir die sortierte Eingabeliste ohne Nullen ablegen werden. Dazu werden wir die Funktionen <b class="code">filter()</b> und <b class="code">sorted()</b> verwenden.
+        </p>
+        <pre class="brush: python">
+items = [5, 3, 0, 0, 4, 1, 4, 0, 7]
+res = [i for i, v in enumerate(items) if v == 0]
+res_2 = sorted(filter(lambda x: x> 0, items))
+print(res_2)
+        </pre>
+        <div class="output">
+                <p>Ausgabe:</p>
+                <pre>[1, 3, 4, 4, 5, 7]</pre>
+        </div>
+        <p>
+            Die Funktion <b class="code">filter()</b> verwendet eine anonyme Funktion (<b class="code">lambda</b> expression), in der wir mit einem einfachen Ausdruck jedes Element der gegebenen Liste daraufhin überprüfen, ob es größer als 0 ist. Wenn ja, lassen wir es stehen, wenn nicht, lassen wir es aus. Und geben das Ergebnis der Funktion <b class="code">filter()</b> sofort an die Funktion <b class="code">sorted()</b> weiter, die die neu erstellte Liste nach dem steigenden Wert der Elemente sortiert.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Nichts funktioniert. SOS
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Alles, was wir tun müssen, ist, unsere Nullen wieder an ihren Platz in der Liste <b class="code">res_2</b> zu setzen. Dazu verwenden wir die Schleife <b class="code">for</b> und die Methode <b class="code">list.insert()</b>. Sie nimmt die Position des Elements als erstes Argument und den Wert des Elements als zweites Element. Das heißt, unsere gespeicherten Indizes in <b class="code">res</b> werden uns von Nutzen sein.
+        </p>
+        <pre class="brush: python">
+items = [5, 3, 0, 0, 4, 1, 4, 0, 7]
+res = [i for i, v in enumerate(items) if v == 0]
+res_2 = sorted(filter(lambda x: x> 0, items))
+for i in res:
+    res_2.insert(i, 0)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich will nicht aufgeben, Hilfe!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Alles, was Sie tun müssen, ist, den Code in einen Funktionsausdruck zu verpacken und <b class="code">res_2</b> zurückzugeben.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from collections.abc import Iterable
+
+
+def except_zero(items: list[int]) -> Iterable[int]:
+
+    res = [i for i, v in enumerate(items) if v == 0]
+    res_2 = sorted(filter(lambda x: x> 0, items))
+    for i in res:
+        res_2.insert(i, 0)
+
+    return res_2
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich möchte der beste der besten PROGRAMMIERER werden!!! ZEIGEN SIE MIR MEHR LÖSUNGEN!!!1!!!11!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Okay, okay! Das ist die richtige Einstellung!=) Diese Lösung wird schwer zu verstehen sein. Wir können diese Aufgabe mit Hilfe des Moduls <b class="code">numpy</b> lösen. Hier können Sie über dieses <a target="_blank" href='https://numpy.org/doc/'>module</a> lesen.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from collections.abc import Iterable
+import numpy
+
+
+def except_zero(items: list[int]) -> Iterable[int]:
+
+    items = numpy.r_[items]
+    items[items!= 0] = sorted(items[items!= 0])
+
+    return items
+        </pre>
+        </div>
+    </div>
+</div>
+</body>

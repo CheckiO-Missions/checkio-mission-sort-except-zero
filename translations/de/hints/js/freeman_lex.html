@@ -1,0 +1,158 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+    </div>
+    <div class="answer">
+        <p>
+            💡 Die Idee ist folgende: Erstellen Sie zunächst ein sortiertes Array mit Nicht-Null-Elementen von <b class="code">items</b>, erstellen Sie dann ein neues Array und füllen Sie es bei der Iteration über <b class="code">items</b> mit Werten aus dem zuvor erstellten Array oder mit <b class="code">0</b>, je nach dem jeweiligen Wert von <b class="code">items</b>. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, womit soll ich beginnen?
+    </div>
+    <div class="answer">
+        <p>
+            Erstellen Sie <b class="code">const cleaned</b> (Sie werden es nach der Erstellung nicht mehr ändern) mit Elementen von <b class="code">items</b>, die nicht Null sind. Verwenden Sie dazu die Methode <a target="_blank" href="https://www.w3schools.com/JSREF/jsref_filter.asp">filter()</a>. 
+        </p>
+        <pre class="brush: javascript">
+const cleaned = items.filter(...);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie filtert man Nicht-Null-Elemente?
+    </div>
+    <div class="answer">
+        <p>
+            Da <b class="code">0</b> den logischen Wert <b class="code">false</b> und alle anderen Zahlen den Wert <b class="code">true</b> haben, können Sie Elemente, die nicht Null sind, nach ihrem logischen Wert filtern. Um den booleschen Wert von etwas zu erhalten, verwenden Sie die Funktion <a target="_blank" href="https://www.w3schools.com/js/js_booleans.asp">Boolean()</a>. Wenn Sie diese Funktion als Filterregel verwenden, bleiben nur <b class="code">true</b> Elemente erhalten.
+        </p>
+        <pre class="brush: javascript">
+const cleaned = items.filter(Boolean);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Was ist als nächstes zu tun?
+    </div>
+    <div class="answer">
+        <p>
+            Jetzt müssen Sie <b class="code">cleaned</b> absteigend sortieren, um später die Elemente in der richtigen Reihenfolge zu erhalten - vom Ende bis zum kleinsten. Verwenden Sie dazu die Methode <a target="_blank" href="https://www.w3schools.com/jsref/jsref_sort.asp">sort()</a> mit einer anonymen Funktion für die absteigende Sortierung. 
+        </p>
+        <pre class="brush: javascript">
+const cleaned = items.filter(Boolean).sort((a, b)=> b-a);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Was ist der nächste Schritt?
+    </div>
+    <div class="answer">
+        <p>
+            Erstellen Sie ein neues Array, das Sie mit den richtigen Werten füllen und am Ende zurückgeben werden.
+        </p>
+        <pre class="brush: javascript">
+let res = [];
+...
+return res;
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie füllt man das neue Array?
+    </div>
+    <div class="answer">
+        <p>
+            Iterieren Sie über die <b class="code">items</b> mit <a target="_blank" href="https://www.w3schools.com/js/js_loop_forof.asp">for/of loop</a> und schieben Sie das Ergebnis eines Ausdrucks in das neue Array.    
+        </p>
+        <pre class="brush: javascript">
+for (let i of items)
+    res.push(...);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Helfen Sie mir, den Ausdruck zu schreiben.
+    </div>
+    <div class="answer">
+        <p>
+            Lassen Sie uns gemeinsam überlegen, was dort stehen soll. Wenn der Wert des aktuellen Elements von <b class="code">items</b> <b class="code">0</b> ist, sollte er seinen Platz im endgültigen Array behalten, andernfalls sollte der nächste Wert aus dem sortierten Array in das endgültige Array eingefügt werden. Auf diese Weise füllen Sie das endgültige Array mit <b class="code">0</b> oder Werten in aufsteigender Reihenfolge. Es sieht so aus, als bräuchten Sie hier <a target="_blank" href="https://www.w3schools.com/react/react_es6_ternary.asp">ternary operator</a> mit der Überprüfung des logischen Wertes von item, wie wir es zuvor getan haben.
+        </p>
+        <pre class="brush: javascript">
+Boolean(i)? ...: ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie schließen Sie den Ausdruck ab?
+    </div>
+    <div class="answer">
+        <p>
+            Wenn das aktuelle Element ungleich Null ist (boolescher Wert == true), müssen Sie den nächsten Wert aus Ihrem sortierten Array <b class="code">cleaned</b> einsetzen. In diesem Fall ist eine kurze und einfache Methode, dies zu tun, die Methode <a target="_blank" href="https://www.w3schools.com/jsref/jsref_pop.asp">pop()</a> - sie entfernt das letzte Element und gibt es zurück. Da <b class="code">cleaned</b> absteigend sortiert ist, benötigen Sie immer das letzte (kleinste) Element. <b class="code">0</b> bleibt <b class="code">0</b>.
+        </p>
+        <pre class="brush: python">
+Boolean(i)? cleaned.pop(): 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie sollte also meine endgültige Lösung aussehen?
+    </div>
+    <div class="answer">
+        <p>
+            Sie müssen nur alles verbinden und Ihren Code in einen Funktionsausdruck verpacken. 
+        </p>
+        <p>Hier ist die gesamte Lösung:</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function exceptZero(items: number[]): number[] {
+
+    const cleaned = items.filter(Boolean).sort((a, b)=> b-a);
+    let res = [];
+    for (let i of items)
+        res.push(Boolean(i)? cleaned.pop(): 0);
+    return res;
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Zeigen Sie mir mehr Lösungen!<br />
+        denn ich möchte ein echter 🥇 Javascript-Held sein!
+    </div>
+    <div class="answer">
+        <p>Klar, schnappen Sie es sich!</p>
+        <p>
+            Hier wird das Filtern und Sortieren in aufsteigender Reihenfolge verwendet, das Sie bereits kennen. Dann wurde das neue Array aus dem ursprünglichen Array mit einem logischen Ausdruck aus dem ursprünglichen Wert und einem aus dem sortierten Array erstellt. Wenn das Original <b class="code">0</b> ist, gibt der logische Ausdruck <b class="code">0</b> zurück, andernfalls den zweiten Wert (aus dem sortierten Array).
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+var exceptZero = (
+    ns, c=0,
+    ns2 = ns.filter(v => v).sort((a,b) => a-b)
+) => ns.map((v,i) => v && ns2[c++])
+        </pre>
+        </div>
+        <p>Klicken Sie im Missionsmenü auf <b>Best Solutions</b> und sehen Sie sich viele weitere interessante Lösungen an!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Vielen Dank! Ich weiß und verstehe jetzt mehr! Alles funktioniert bestens!
+    </div>
+    <div class="answer">
+        👍 Freut mich zu hören!
+    </div>
+</div>
+</body>

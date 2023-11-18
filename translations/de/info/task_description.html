@@ -1,0 +1,33 @@
+<!-- Describe task in general -->
+
+<p>
+    Sortieren Sie die ganzen Zahlen der Reihe nach nacheinander. Aber die Position der Nullen sollte nicht verändert werden.
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Eingabe:</strong> {% if is_js %}Array{% else %}Liste{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span> von ganzen Zahlen <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
+</p>
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}sort-except-zero.png" alt="example" style="max-height: 200px"/>
+</p>
+<p>
+   <strong>Ausgabe:</strong> {% if is_js %}Array{% else %} Liste <span>(List)</span> oder eine andere Iterable (Tupel <span>(tuple)</span>, Generator <span>(generator)</span>, Iterator <span>(iterator)</span>){% endif %} von ganzen Zahlen <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Beispiele:</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<p>
+    <strong>Vorbedingung:</strong>
+</p>
+<p>
+    Alle Zahlen sind nicht-negativ.
+</p>
